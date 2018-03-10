@@ -1,14 +1,14 @@
-<?php 
-if(isset($_GET['clavecct'])){
+<?php
+if (isset($_GET['clavecct'])) {
     $clavecct = $_GET['clavecct'];
-    include("".$_SERVER['DOCUMENT_ROOT'].'/Desbloqueo/conexion.php');
-    $cn = Conectarse();
-    $sql = "SELECT * FROM ct_escuelas LEFT JOIN ct_direscolar ON ct_escuelas.clavecct = ct_direscolar.clavecct WHERE ct_escuelas.clavecct LIKE '%".$clavecct."%'";
-    $ejecutar = mysql_query($sql,$cn) or die(mysql_error());
-    while ($row = mysql_fetch_array($ejecutar)){
+    include "" . $_SERVER['DOCUMENT_ROOT'] . '/Desbloqueo/conexion.php';
+    $cn       = Conectarse();
+    $sql      = "SELECT * FROM ct_escuelas LEFT JOIN ct_direscolar ON ct_escuelas.clavecct = ct_direscolar.clavecct WHERE ct_escuelas.clavecct LIKE '%" . $clavecct . "%'";
+    $ejecutar = mysql_query($sql, $cn) or die(mysql_error());
+    while ($row = mysql_fetch_array($ejecutar)) {
 
-        $clavecom = $row['clavecct'];
-        $escuela = $row['nombrect'];
+        $clavecom  = $row['clavecct'];
+        $escuela   = $row['nombrect'];
         $localidad = $row['localidad'];
         $municipio = $row['municipio'];
 
@@ -27,7 +27,7 @@ if(isset($_GET['clavecct'])){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>SICAT EXTERNO</title>
-    <?php include('../css.php');?>
+    <?php include '../css.php';?>
 </head>
 
 <body class="top-navigation">
@@ -38,8 +38,8 @@ if(isset($_GET['clavecct'])){
         <nav class="navbar navbar-static-top" role="navigation">
 
         <div class="navbar-header">
-        
-        
+
+
         </div>
 
         <div class="navbar-collapse collapse" id="navbar">
@@ -53,12 +53,12 @@ if(isset($_GET['clavecct'])){
             <a href="<?PHP $_SERVER['DOCUMENT_ROOT']?>/sicat/externo">
              <i class="fa fa-arrow-left"></i> Pagina Principal
             </a>
-           </li>      
+           </li>
         </ul>
         </div>
         </nav>
         </div>
-        
+
             <div class="wrapper wrapper-content">
             <div class="container">
 
@@ -73,10 +73,10 @@ if(isset($_GET['clavecct'])){
             </div>
             </div>
             <div class="ibox-content">
-            
 
-          
-          
+
+
+
             <form name="equipos" id="equipos" method="POST" id="form_rep" onsubmit="return validarFormulario()">
             <div class="row show-grid">
             <div class="col-md-4">
@@ -84,7 +84,7 @@ if(isset($_GET['clavecct'])){
             <select  id="equipo" name="equipo" class="form-control">
                 <option value="TABLET">TABLET</option>
                 <option value="LAPTOP_MX">LAPTOP MX</option>
-            </select>
+            </select><p class="text-danger">Escoge que tipo de equipo mx tienes.</p>
             </div>
             </div>
             <div class="row show-grid">
@@ -94,21 +94,21 @@ if(isset($_GET['clavecct'])){
             </div>
             <div class="col-md-4">
             <label>Clave CT:</label><br>
-            <input type="text" id="clave" value="<?php echo $clavecom;?>" placeholder="Ej: 26DPR0000H" name="clave" class="form-control">
+            <input type="text" id="clave" value="<?php echo $clavecom; ?>" placeholder="Ej: 26DPR0000H" name="clave" class="form-control">
             </div>
             <div class="col-md-4">
             <label>Escuela:</label><br>
-            <input type="text" id="escu" value="<?php echo $escuela;?>" placeholder="Ej: Benito juárez" name="escu" class="form-control">
+            <input type="text" id="escu" value="<?php echo $escuela; ?>" placeholder="Ej: Benito juárez" name="escu" class="form-control">
             </div>
             <div class="col-md-4">
             <label>Localidad:</label><br>
-            <input type="text" id="loc" value="<?php echo $localidad;?>" placeholder="Ej: Miguel Aleman" name="loc" class="form-control">
+            <input type="text" id="loc" value="<?php echo $localidad; ?>" placeholder="Ej: Miguel Aleman" name="loc" class="form-control">
             </div>
             <div class="col-md-4">
             <label>Municipio:</label><br>
-            <input type="text" id="mun" value="<?php echo $municipio;?>" placeholder="Ej: Hermosillo" name="mun" class="form-control">
+            <input type="text" id="mun" value="<?php echo $municipio; ?>" placeholder="Ej: Hermosillo" name="mun" class="form-control">
             </div>
-            
+
             <div class="col-md-4">
             <label>Nombre del niñ@:</label><br>
             <input type="text" id="nino" placeholder=" Ej: Juan Perez Perez"  name="nino" class="form-control">
@@ -117,7 +117,7 @@ if(isset($_GET['clavecct'])){
             <label>CURP:</label><br>
             <input type="text" id="curp" placeholder="" name="curp" class="form-control">
             </div>
-            
+
             </div>
             <div class="col-md-12">
             <h2>Informaci&oacute;n del equipo a desbloquear</h2>
@@ -127,7 +127,7 @@ if(isset($_GET['clavecct'])){
             <label>BOOT TIK:</label><br>
             <input type="text" id="boot" placeholder="Ej: 00 00 00" name="boot" class="form-control">
             </div>
-            
+
             <div class="col-md-4">
             <label>HARDWARE ID:</label><br>
             <input type="text" id="hard" placeholder="Ej: ECA86B57248D" name="hard" class="form-control">
@@ -136,14 +136,14 @@ if(isset($_GET['clavecct'])){
             <label>PROVISIONAL NUMBER:</label><br>
             <input type="text" id="number" placeholder="Ej: S99" name="number" class="form-control">
             </div>
-            
+
 
             </div>
 
             <div class="row show-grid">
             <div class="col-md-12">
             <label>Diagnostico equipo:</label><br>
-            <textarea rows="6" id="diagnostico" name="diag" placeholder="Ej: Bloqueada" class="form-control"></textarea> 
+            <textarea rows="6" id="diagnostico" name="diag" placeholder="Ej: Bloqueada" class="form-control"></textarea>
             </div>
             </div>
             <div class="col-md-12">
@@ -169,7 +169,7 @@ if(isset($_GET['clavecct'])){
             <input type="button" id="cancelar" name="cancelar" value="Cancelar" class="btn btn-primary" >
             </div>
             </div>
-            </form> 
+            </form>
 
 
             </div>
@@ -177,7 +177,7 @@ if(isset($_GET['clavecct'])){
             </div>
             </div>
             </div>
-            
+
             </div>
             </div>
 
@@ -190,15 +190,15 @@ if(isset($_GET['clavecct'])){
             <strong>Copyright</strong> Aulas de Tecnologia &copy; 2016-2017
             </div>
             </div>
-            
+
 
         </div>
         </div>
 
 
 
-   <?php include('../js.php');?>
-    <script type="text/javascript">     
+   <?php include '../js.php';?>
+    <script type="text/javascript">
 
         $("#aceptar").click(function(){
             if(validarDatos() == true){
@@ -222,15 +222,15 @@ if(isset($_GET['clavecct'])){
            });
 
            $("#cancelar").click(function(){
-            
+
                 window.location.href='../index.php';
            });
 
-            
-         
+
+
 
         function insertarDatos(serie,clave,escuela,loc,mun,nombre_nino,curp,boot,hardware,provisional,diagnostico,namecomplet,telcel,correo,tipoeq){
-           
+
             var arreglo = { noserie:serie,
                             clavecct:clave,
                             escuela:escuela,
@@ -253,17 +253,17 @@ if(isset($_GET['clavecct'])){
                 url: '../Controller/InsertarlaptabController.php',
                 async:false,
                 data:arreglo,
-                beforeSend:function() { 
+                beforeSend:function() {
                      console.log("entro pero fue demasiado rapido");
                 $(" <div class='spiner-example'><div class='sk-spinner sk-spinner-three-bounce'><div class='sk-bounce1'></div><div class='sk-bounce2'></div><div class='sk-bounce3'></div></div></div>").appendTo("body");
                 },
                 success:function(xresultado){
-                    
+
                    var resultado  = JSON.parse(xresultado);
                    console.log(resultado);
                    if(resultado.Registrado == 1){
 
-                   
+
                    swal({
                    title: "BUEN TRABAJO!",
                    text: "DATOS GUARDADOS CON EXITO, NOSOTROS NOS PONDREMOS EN CONTACTO EN CUANTO EL CODIGO O ARCHIVO SEA GENERADO.",
@@ -277,24 +277,24 @@ if(isset($_GET['clavecct'])){
                    window.location.href='../index.php';
                    });
 
-                   
-                   
+
+
                    }else{
 
                     sweetAlert("Cuidado", "DATOS NO GUARDADO OCURRIO UN ERROR ACTUALICE LA PAGINA Y VUELVA A RELLENAR LOS CAMPOS.", "Danger");
 
-                   }    
+                   }
                 },
                 error: function(XMLHttpRequest, textStatus, errorThrown) {
                     sweetAlert("Cuidado", "Error al insertar datos intente mas tarde.", "error");
-            } 
-    
+            }
+
             })
            }
 
     </script>
 
-    
+
 
 </body>
 

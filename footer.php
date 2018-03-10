@@ -3,6 +3,6 @@
             <strong></strong>
             </div>
             <div>
-            <strong>Copyright</strong> Aulas de Medios &copy; 2016-2017
+            <strong>Copyright</strong> Aulas de Medios &copy; 2017-2018
             </div>
             </div>

@@ -3844,7 +3844,7 @@ table.table-mail tr td {
 }
 /* BACKGROUNDS */
 .gray-bg {
-  background-color: #f3f3f4;
+  background-image: url("../img/fondo.jpg");
 }
 .white-bg {
   background-color: #ffffff;
